@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ff5f9e">
+  <title>Oczko i Nitka ♡ Rękodzieło na szydełku</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--pink:#ff5f9e;--hot:#ed347e;--lilac:#a77bff;--yellow:#ffdf59;--aqua:#64dfe0;--cream:#fff9f2;--ink:#563d5b;--muted:#8a748b;--white:#fff;--shadow:0 12px 35px #814b6818}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Nunito, sans-serif}
+    button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}
+    .topbar{background:var(--pink);color:white;text-align:center;padding:8px 12px;font-weight:800;font-size:13px;letter-spacing:.3px}
+    header{position:sticky;top:0;z-index:10;background:#fffdfb;box-shadow:0 4px 22px #69425d12}
+    .nav{max-width:1180px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{font:700 30px Fredoka,cursive;color:var(--hot);text-decoration:none;white-space:nowrap}.brand span{color:var(--lilac)}
+    .links{display:flex;gap:24px;align-items:center}.links a{color:var(--ink);text-decoration:none;font-weight:800}.links a:hover{color:var(--hot)}
+    .pill{border-radius:999px;padding:12px 19px;font-weight:900;transition:.2s}.pill:hover{transform:translateY(-2px)}
+    .cart-btn{background:var(--yellow);color:#694d36}.primary{background:var(--pink);color:white;box-shadow:0 7px 18px #ff5f9e35}.secondary{background:#eee4ff;color:#704db4}
+    .hero{overflow:hidden;position:relative;background:linear-gradient(115deg,#ffb4d0 0%,#d9c2ff 55%,#a8f0ed 100%);padding:68px 22px 74px}
+    .hero-inner{max-width:1120px;margin:auto;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:30px}
+    .eyebrow{display:inline-block;background:#ffffffa8;padding:8px 14px;border-radius:30px;font-size:13px;font-weight:900;letter-spacing:1px;color:#895174}
+    h1{font:700 clamp(42px,6vw,72px)/1.02 Fredoka,cursive;color:#fff;margin:18px 0;text-shadow:0 3px 0 #d95d96}
+    .hero p{font-size:18px;line-height:1.7;max-width:520px;color:#63476b;font-weight:700}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.hero-art{font-size:clamp(120px,20vw,220px);text-align:center;filter:drop-shadow(0 18px 12px #754b5720);transform:rotate(5deg)}
+    .floating{position:absolute;border-radius:50%;opacity:.65}.f1{width:75px;height:75px;background:var(--yellow);top:20px;right:9%}.f2{width:35px;height:35px;background:#fff;bottom:24px;left:5%}
+    .wrap{max-width:1180px;margin:auto;padding:62px 22px}.section-head{text-align:center;margin-bottom:30px}.section-head h2{font:700 clamp(30px,4vw,43px) Fredoka,cursive;color:var(--hot);margin:0 0 8px}.section-head p{margin:0;color:var(--muted);font-weight:700}
+    .chips{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:20px 0 30px}.chip{background:#fff;border:2px solid #f4dbe6;color:#91657d;border-radius:30px;padding:8px 15px;font-weight:900}.chip.active{background:var(--lilac);border-color:var(--lilac);color:white}
+    .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.product{background:#fff;border-radius:24px;padding:12px;box-shadow:var(--shadow);position:relative;transition:.2s;display:flex;flex-direction:column}.product:hover{transform:translateY(-5px)}.product-img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:17px;background:#ffe7f0}.product h3{font:600 21px Fredoka;margin:13px 4px 4px}.product .desc{color:var(--muted);font-size:13px;line-height:1.5;margin:0 4px 10px;min-height:38px}.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding:4px}.price{font:700 22px Fredoka;color:var(--hot)}.add{background:var(--pink);color:#fff;border-radius:15px;padding:10px 13px;font-weight:900}.sold{position:absolute;top:20px;left:20px;background:var(--yellow);padding:7px 11px;border-radius:20px;font-size:12px;font-weight:900}
+    .empty{grid-column:1/-1;text-align:center;background:#fff;padding:35px;border-radius:22px;color:var(--muted);font-weight:800}
+    .about{background:#f0e7ff;border-radius:30px;padding:35px;text-align:center}.about .emoji{font-size:42px}.about h2{font:700 32px Fredoka;color:#8159c4}.about p{max-width:680px;margin:10px auto;line-height:1.8;font-weight:700}
+    footer{background:#ffb1ce;text-align:center;padding:35px 20px;color:#74425d}footer .brand{color:#fff}footer p{font-weight:800}
+    .modal-backdrop{display:none;position:fixed;inset:0;background:#30203588;z-index:30;padding:18px;overflow:auto}.modal-backdrop.open{display:flex;align-items:center;justify-content:center}.modal{background:#fff;border-radius:25px;padding:25px;width:min(520px,100%);max-height:90vh;overflow:auto;box-shadow:0 20px 70px #25132844}.modal h2{font:700 28px Fredoka;color:var(--hot);margin:0 0 15px}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.close{background:#f8e8ef;border-radius:50%;width:36px;height:36px;font-size:20px;color:#87536d}
+    .field{display:grid;gap:6px;margin:13px 0}.field label{font-weight:900;font-size:14px}.field input,.field textarea,.field select{width:100%;border:2px solid #f0dce7;border-radius:13px;padding:12px;color:var(--ink);background:#fff}.field textarea{min-height:85px;resize:vertical}.hint{font-size:12px;color:var(--muted);line-height:1.5}.row{display:flex;gap:10px;align-items:center}.row>*{flex:1}
+    .admin-bar{display:none;background:#fff1f7;border-bottom:1px solid #f4d5e4}.admin-bar.show{display:block}.admin-inner{max-width:1180px;margin:auto;padding:10px 22px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.admin-tools{display:flex;gap:8px;flex-wrap:wrap}.small-btn{padding:9px 13px;border-radius:12px;background:#eee4ff;color:#704db4;font-weight:900}.small-btn.danger{background:#ffe3e8;color:#b23f66}
+    .admin-section{display:none;background:#fff3f8;border-radius:25px;padding:22px;margin:25px auto;max-width:1180px}.admin-section.show{display:block}.admin-section h2{font:700 27px Fredoka;color:var(--hot);margin:0 0 15px}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.admin-card{background:#fff;border-radius:18px;padding:18px}.admin-card h3{font:600 20px Fredoka;margin:0 0 12px}.admin-list{display:grid;gap:10px}.admin-item{display:flex;gap:12px;align-items:center;border:1px solid #f2e2eb;border-radius:14px;padding:9px}.admin-item img{width:58px;height:58px;object-fit:cover;border-radius:10px}.admin-item .grow{flex:1;min-width:0}.admin-item strong{display:block}.admin-item small{color:var(--muted)}.order-status{font-weight:900;color:#8057bd}
+    .cart-line{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #f2e5ec}.cart-line button{background:#ffe5ed;color:#a33d69;border-radius:9px;padding:5px 9px}.total{font:700 24px Fredoka;color:var(--hot);text-align:right;margin:18px 0}
+    .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#583d5b;color:#fff;padding:12px 18px;border-radius:30px;z-index:60;display:none;box-shadow:var(--shadow);max-width:90%;text-align:center}.toast.show{display:block}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-inner{grid-template-columns:1fr .7fr}}
+    @media(max-width:680px){.nav{flex-wrap:wrap;justify-content:center}.links{order:3;width:100%;justify-content:center;gap:15px;font-size:14px}.brand{font-size:27px}.hero{padding:48px 20px}.hero-inner{grid-template-columns:1fr;text-align:center}.hero p{margin:auto}.hero-actions{justify-content:center}.hero-art{font-size:125px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product{padding:8px;border-radius:18px}.product h3{font-size:18px}.product-bottom{align-items:flex-start;flex-direction:column}.add{width:100%}.admin-grid{grid-template-columns:1fr}.wrap{padding:45px 15px}}
+  </style>
+</head>
+<body>
+  <div class="topbar">✿ MAŁE RZECZY, WIELKA MIŁOŚĆ ✿ Rękodzieło tworzone oczko po oczku</div>
+  <header>
+    <div class="nav">
+      <a class="brand" href="#home">♡ Oczko<span> i Nitka</span></a>
+      <nav class="links"><a href="#home">Start</a><a href="#shop">Sklep</a><a href="#about">O nas</a></nav>
+      <button class="pill cart-btn" id="openCart">🛍️ Koszyk <span id="cartCount">0</span></button>
+      <button class="pill secondary" id="loginBtn">🔐 Panel właściciela</button>
+    </div>
+  </header>
+  <div class="admin-bar" id="adminBar">
+    <div class="admin-inner"><strong>🎀 Jesteś zalogowana jako właścicielka sklepu</strong><div class="admin-tools"><button class="small-btn" id="toggleAdmin">⚙️ Zarządzaj sklepem</button><button class="small-btn danger" id="logoutBtn">Wyloguj</button></div></div>
+  </div>
+
+  <section class="hero" id="home">
+    <span class="floating f1"></span><span class="floating f2"></span>
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow">♡ RĘCZNIE ROBIONE Z MIŁOŚCIĄ ♡</span>
+        <h1>Ręcznie robione,<br>prosto z serca!</h1>
+        <p>Maskotki, kwiaty, breloczki, torebki i małe cuda z włóczki. Każda rzecz powstaje ręcznie, oczko po oczku — znajdź coś dla siebie! 🧶</p>
+        <div class="hero-actions"><a class="pill primary" href="#shop">Odkryj rękodzieło ♡</a><a class="pill secondary" href="#about">Poznaj nas</a></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">🧶🌼👜</div>
+    </div>
+  </section>
+
+  <main>
+    <section class="wrap" id="shop">
+      <div class="section-head"><h2>Małe dzieła z włóczki 🌈</h2><p>Od uroczych maskotek po dodatki i dekoracje — wszystko robione ręcznie.</p></div>
+      <div class="chips"><button class="chip active" data-filter="all">Wszystkie</button><button class="chip" data-filter="available">Dostępne</button><button class="chip" data-filter="sold">Sprzedane</button><select class="chip" id="categoryFilter" aria-label="Filtruj kategorię"><option value="all">Wszystkie kategorie</option><option>Maskotki</option><option>Breloczki</option><option>Kwiaty</option><option>Torebki</option><option>Ubrania i dodatki</option><option>Ozdoby</option><option>Inne</option></select></div>
+      <div class="grid" id="productGrid"><div class="empty">Ładowanie rękodzieła… 💗</div></div>
+      <section class="admin-section" id="adminPanel">
+        <h2>🎀 Panel właścicielki</h2>
+        <div class="admin-grid">
+          <div class="admin-card">
+            <h3 id="formTitle">Dodaj nowy produkt</h3>
+            <form id="productForm">
+              <input type="hidden" id="editId">
+              <div class="field"><label for="productName">Nazwa produktu *</label><input id="productName" maxlength="70" required placeholder="Np. Kwiatowy breloczek"></div>
+              <div class="field"><label for="productCategory">Kategoria</label><select id="productCategory"><option>Maskotki</option><option>Breloczki</option><option>Kwiaty</option><option>Torebki</option><option>Ubrania i dodatki</option><option>Ozdoby</option><option>Inne</option></select></div>
+              <div class="field"><label for="productPrice">Cena (zł) *</label><input id="productPrice" type="number" min="0.01" step="0.01" required placeholder="Np. 55"></div>
+              <div class="field"><label for="productDescription">Opis</label><textarea id="productDescription" maxlength="500" placeholder="Opisz swój produkt…"></textarea></div>
+              <div class="field"><label for="productPhoto">Zdjęcie produktu <span id="photoRequired">*</span></label><input id="productPhoto" type="file" accept="image/*"><span class="hint">Najlepiej zdjęcie JPG, PNG lub WebP. Zdjęcie zostanie wysłane do Firebase Storage.</span><img id="photoPreview" style="display:none;max-width:150px;max-height:150px;object-fit:cover;border-radius:14px"></div>
+              <div class="field"><label for="productAvailability">Dostępność</label><select id="productAvailability"><option value="available">Dostępna</option><option value="sold">Sprzedana</option></select></div>
+              <div class="row"><button class="pill primary" id="saveProduct" type="submit">Dodaj do sklepu ♡</button><button class="pill secondary" id="cancelEdit" type="button" style="display:none">Anuluj</button></div>
+            </form>
+          </div>
+          <div class="admin-card">
+            <h3>Twoje produkty</h3>
+            <div class="admin-list" id="adminProducts"><p class="hint">Ładowanie…</p></div>
+            <hr style="border:0;border-top:1px solid #f2e2eb;margin:20px 0">
+            <h3>📦 Zamówienia</h3>
+            <div class="admin-list" id="adminOrders"><p class="hint">Ładowanie…</p></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="wrap" id="about">
+      <div class="about"><div class="emoji">🧶💖🌈</div><h2>Każde oczko ma znaczenie!</h2><p>To mały, kolorowy świat rękodzieła na szydełku. Znajdziesz tu maskotki, dodatki, dekoracje i wyjątkowe drobiazgi — każdy wykonany z cierpliwością, starannością i ogromną dawką miłości. Możesz też zapytać o projekt na zamówienie!</p></div>
+    </section>
+  </main>
+  <footer><a class="brand" href="#home">♡ Oczko i Nitka</a><p>Tworzone ręcznie, z miłością i włóczką 🧶</p><small>© <span id="year"></span> Oczko i Nitka</small></footer>
+
+  <div class="modal-backdrop" id="loginModal">
+    <div class="modal">
+      <div class="modal-head"><h2>Panel właścicielki 🔐</h2><button class="close" data-close="loginModal">×</button></div>
+      <p class="hint">Zaloguj się na konto Firebase Auth przypisane do właścicielki sklepu.</p>
+      <form id="loginForm">
+        <div class="field"><label for="email">E-mail</label><input id="email" type="email" autocomplete="username" required placeholder="Twój e-mail"></div>
+        <div class="field"><label for="password">Hasło</label><input id="password" type="password" autocomplete="current-password" required placeholder="Hasło"></div>
+        <button class="pill primary" type="submit" style="width:100%">Zaloguj się ♡</button>
+      </form>
+      <p class="hint" style="margin-top:14px">Konto administratora utwórz w Firebase Console → Authentication → Users → Add user. Nie udostępniaj nikomu hasła.</p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="cartModal">
+    <div class="modal">
+      <div class="modal-head"><h2>Twój koszyczek 🛍️</h2><button class="close" data-close="cartModal">×</button></div>
+      <div id="cartItems"><p class="hint">Koszyk jest pusty.</p></div>
+      <div class="total">Razem: <span id="cartTotal">0,00</span> zł</div>
+      <form id="checkoutForm">
+        <h3 style="font-family:Fredoka;color:var(--hot)">Dane do zamówienia</h3>
+        <div class="field"><label for="buyerName">Imię i nazwisko *</label><input id="buyerName" required maxlength="100"></div>
+        <div class="field"><label for="buyerEmail">Adres e-mail *</label><input id="buyerEmail" type="email" required maxlength="150"></div>
+        <div class="field"><label for="buyerMessage">Wiadomość (opcjonalnie)</label><textarea id="buyerMessage" maxlength="1000" placeholder="Np. preferowany sposób dostawy…"></textarea></div>
+        <p class="hint">Wysłanie zamówienia nie oznacza automatycznej płatności. Sklep skontaktuje się z Tobą w sprawie potwierdzenia i dostawy.</p>
+        <button class="pill primary" type="submit" style="width:100%">Wyślij zamówienie 💗</button>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-storage.js";
+    import { firebaseConfig, ADMIN_UID } from "./firebase-config.js";
+
+    const $ = id => document.getElementById(id);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+    let currentUser = null, products = [], cart = [], activeFilter = "all", selectedPhoto = null;
+
+    $("year").textContent = new Date().getFullYear();
+    function toast(msg){$("toast").textContent=msg;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),3200)}
+    function isAdmin(){return !!currentUser && !!ADMIN_UID && currentUser.uid===ADMIN_UID}
+    function showModal(id){$(id).classList.add("open")}
+    function hideModal(id){$(id).classList.remove("open")}
+    document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>hideModal(b.dataset.close)));
+    document.querySelectorAll(".modal-backdrop").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("open")}));
+    $("loginBtn").onclick=()=>isAdmin()?($("adminPanel").classList.toggle("show"),$("adminPanel").scrollIntoView({behavior:"smooth"})):showModal("loginModal");
+    $("toggleAdmin").onclick=()=>{$("adminPanel").classList.toggle("show");$("adminPanel").scrollIntoView({behavior:"smooth"})};
+    $("logoutBtn").onclick=async()=>{await signOut(auth);toast("Wylogowano z panelu.")};
+    $("openCart").onclick=()=>{renderCart();showModal("cartModal")};
+    $("loginForm").addEventListener("submit",async e=>{e.preventDefault();try{await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);hideModal("loginModal");$("loginForm").reset();toast("Witaj w panelu sklepu! 💗")}catch(err){toast("Nie udało się zalogować. Sprawdź e-mail i hasło.")}});
+    onAuthStateChanged(auth,user=>{currentUser=user;$("adminBar").classList.toggle("show",isAdmin());$("loginBtn").textContent=isAdmin()?"⚙️ Panel właściciela":"🔐 Panel właściciela";if(!isAdmin())$("adminPanel").classList.remove("show");else renderAdmin()});
+
+    async function loadProducts(){
+      try{const snap=await getDocs(query(collection(db,"products"),orderBy("createdAt","desc")));products=snap.docs.map(d=>({id:d.id,...d.data()}));renderProducts();if(isAdmin())renderAdmin()}
+      catch(e){$("productGrid").innerHTML='<div class="empty">Nie udało się pobrać produktów. Sprawdź konfigurację Firebase i reguły Firestore.</div>';console.error(e)}
+    }
+    function money(n){return Number(n||0).toLocaleString("pl-PL",{minimumFractionDigits:2,maximumFractionDigits:2})}
+    function renderProducts(){
+      const category=$("categoryFilter")?.value||"all";
+      const list=products.filter(p=>(activeFilter==="all"||(activeFilter==="available"&&p.availability!=="sold")||(activeFilter==="sold"&&p.availability==="sold"))&&(category==="all"||(p.category||"Maskotki")===category));
+      const grid=$("productGrid");grid.innerHTML="";
+      if(!list.length){grid.innerHTML='<div class="empty">Jeszcze nie ma tu produktów. Właścicielka może dodać pierwsze szydełkowe cuda w panelu! 🧶</div>';return}
+      list.forEach(p=>{
+        const card=document.createElement("article");card.className="product";
+        const img=document.createElement("img");img.className="product-img";img.src=p.imageUrl;img.alt=p.name;
+        const title=document.createElement("h3");title.textContent=p.name;
+        const categoryTag=document.createElement("p");categoryTag.className="hint";categoryTag.style.margin="0 4px";categoryTag.textContent=p.category||"Maskotki";
+        const desc=document.createElement("p");desc.className="desc";desc.textContent=p.description||"Ręcznie wykonany produkt ♡";
+        const bottom=document.createElement("div");bottom.className="product-bottom";
+        const price=document.createElement("span");price.className="price";price.textContent=money(p.price)+" zł";
+        const btn=document.createElement("button");btn.className="add";btn.textContent=p.availability==="sold"?"Sprzedana ♡":"Do koszyka";
+        btn.disabled=p.availability==="sold";if(btn.disabled)btn.style.opacity=".55";btn.onclick=()=>{cart.push({id:p.id,name:p.name,price:Number(p.price)});$("cartCount").textContent=cart.length;toast("Dodano do koszyka! ♡")};
+        bottom.append(price,btn);card.append(img,title,categoryTag,desc,bottom);
+        if(p.availability==="sold"){const badge=document.createElement("span");badge.className="sold";badge.textContent="SPRZEDANA";card.append(badge)}
+        grid.append(card);
+      });
+    }
+    document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{activeFilter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));renderProducts()});
+    $("categoryFilter").onchange=renderProducts;
+    function renderCart(){
+      $("cartCount").textContent=cart.length;const el=$("cartItems");el.innerHTML="";
+      if(!cart.length){el.innerHTML='<p class="hint">Koszyk jest pusty. Znajdź swojego przytulaska! 🧸</p>'}
+      cart.forEach((p,i)=>{const line=document.createElement("div");line.className="cart-line";const name=document.createElement("span");name.textContent=p.name+" – "+money(p.price)+" zł";const remove=document.createElement("button");remove.textContent="Usuń";remove.onclick=()=>{cart.splice(i,1);renderCart()};line.append(name,remove);el.append(line)});
+      $("cartTotal").textContent=money(cart.reduce((s,p)=>s+p.price,0));
+    }
+    $("checkoutForm").addEventListener("submit",async e=>{
+      e.preventDefault();if(!cart.length){toast("Koszyk jest pusty.");return}
+      const btn=e.submitter;btn.disabled=true;btn.textContent="Wysyłanie…";
+      try{
+        await addDoc(collection(db,"orders"),{customerName:$("buyerName").value.trim(),customerEmail:$("buyerEmail").value.trim(),message:$("buyerMessage").value.trim(),items:cart.map(p=>({productId:p.id,name:p.name,price:p.price})),total:cart.reduce((s,p)=>s+p.price,0),status:"Nowe",createdAt:serverTimestamp()});
+        cart=[];renderCart();$("checkoutForm").reset();hideModal("cartModal");toast("Zamówienie wysłane! Dziękujemy 💗");
+      }catch(err){console.error(err);toast("Nie udało się wysłać zamówienia. Spróbuj ponownie.")}
+      finally{btn.disabled=false;btn.textContent="Wyślij zamówienie 💗"}
+    });
+    $("productPhoto").addEventListener("change",()=>{selectedPhoto=$("productPhoto").files[0]||null;if(selectedPhoto){const u=URL.createObjectURL(selectedPhoto);$("photoPreview").src=u;$("photoPreview").style.display="block"}});
+    function resetProductForm(){$("productForm").reset();$("editId").value="";$("photoPreview").style.display="none";selectedPhoto=null;$("formTitle").textContent="Dodaj nowy produkt";$("saveProduct").textContent="Dodaj do sklepu ♡";$("cancelEdit").style.display="none";$("photoRequired").textContent="*"}
+    $("cancelEdit").onclick=resetProductForm;
+    $("productForm").addEventListener("submit",async e=>{
+      e.preventDefault();if(!isAdmin()){toast("Brak uprawnień.");return}
+      const id=$("editId").value,name=$("productName").value.trim(),price=Number($("productPrice").value),description=$("productDescription").value.trim(),category=$("productCategory").value,availability=$("productAvailability").value;
+      if(!name||!Number.isFinite(price)||price<=0){toast("Wpisz nazwę i poprawną cenę.");return}
+      const btn=$("saveProduct");btn.disabled=true;btn.textContent="Zapisywanie…";
+      try{
+        let imageUrl=null,imagePath=null;
+        if(selectedPhoto){const safeName=selectedPhoto.name.replace(/[^a-zA-Z0-9._-]/g,"_");imagePath=`products/${Date.now()}_${safeName}`;const fileRef=ref(storage,imagePath);await uploadBytes(fileRef,selectedPhoto);imageUrl=await getDownloadURL(fileRef)}
+        if(id){
+          const old=products.find(p=>p.id===id);const data={name,price,description,category,availability,updatedAt:serverTimestamp()};
+          if(imageUrl){data.imageUrl=imageUrl;data.imagePath=imagePath}
+          await updateDoc(doc(db,"products",id),data);
+          if(imageUrl&&old?.imagePath){try{await deleteObject(ref(storage,old.imagePath))}catch(e){console.warn("Nie udało się usunąć starego zdjęcia",e)}}
+          toast("Zmieniono produkt! ✨");
+        }else{
+          if(!imageUrl)throw new Error("Dodaj zdjęcie produktu.");
+          await addDoc(collection(db,"products"),{name,price,description,category,availability,imageUrl,imagePath,createdAt:serverTimestamp()});
+          toast("Dodano nowy produkt! 🎀");
+        }
+        resetProductForm();await loadProducts();
+      }catch(err){console.error(err);toast(err.message==="Dodaj zdjęcie produktu."?err.message:"Błąd zapisu. Sprawdź Firebase Storage i reguły.")}
+      finally{btn.disabled=false;btn.textContent=id?"Zapisz zmiany":"Dodaj do sklepu ♡"}
+    });
+    function renderAdmin(){
+      if(!isAdmin())return;
+      const list=$("adminProducts");list.innerHTML="";
+      if(!products.length)list.innerHTML='<p class="hint">Nie dodano jeszcze produktów.</p>';
+      products.forEach(p=>{
+        const item=document.createElement("div");item.className="admin-item";const img=document.createElement("img");img.src=p.imageUrl;
+        const grow=document.createElement("div");grow.className="grow";const strong=document.createElement("strong");strong.textContent=p.name;const small=document.createElement("small");small.textContent=(p.category||"Maskotki")+" · "+money(p.price)+" zł · "+(p.availability==="sold"?"Sprzedana":"Dostępna");grow.append(strong,small);
+        const edit=document.createElement("button");edit.className="small-btn";edit.textContent="Edytuj";edit.onclick=()=>editProduct(p.id);
+        const del=document.createElement("button");del.className="small-btn danger";del.textContent="Usuń";del.onclick=()=>removeProduct(p.id);
+        item.append(img,grow,edit,del);list.append(item);
+      });
+      loadOrders();
+    }
+    function editProduct(id){
+      const p=products.find(x=>x.id===id);if(!p)return;
+      $("editId").value=p.id;$("productName").value=p.name;$("productCategory").value=p.category||"Maskotki";$("productPrice").value=p.price;$("productDescription").value=p.description||"";$("productAvailability").value=p.availability||"available";
+      $("photoRequired").textContent="(opcjonalne — zostaw puste, aby zachować obecne zdjęcie)";
+      $("formTitle").textContent="Edytuj produkt";$("saveProduct").textContent="Zapisz zmiany";$("cancelEdit").style.display="inline-block";
+      $("productForm").scrollIntoView({behavior:"smooth",block:"center"});
+    }
+    async function removeProduct(id){
+      if(!confirm("Na pewno usunąć ten produkt?"))return;
+      try{const p=products.find(x=>x.id===id);await deleteDoc(doc(db,"products",id));if(p?.imagePath){try{await deleteObject(ref(storage,p.imagePath))}catch(e){console.warn(e)}}await loadProducts();toast("Produkt usunięty.")}catch(e){toast("Nie udało się usunąć produktu.")}
+    }
+    async function loadOrders(){
+      if(!isAdmin())return;const el=$("adminOrders");el.innerHTML="";
+      try{
+        const snap=await getDocs(query(collection(db,"orders"),orderBy("createdAt","desc")));
+        if(snap.empty){el.innerHTML='<p class="hint">Nie ma jeszcze zamówień.</p>';return}
+        snap.docs.forEach(d=>{
+          const o=d.data(),item=document.createElement("div");item.className="admin-item";const grow=document.createElement("div");grow.className="grow";
+          const strong=document.createElement("strong");strong.textContent=o.customerName+" · "+money(o.total)+" zł";
+          const small=document.createElement("small");small.textContent=(o.customerEmail||"")+" · "+(o.items||[]).map(x=>x.name).join(", ");
+          const status=document.createElement("div");status.className="order-status";status.textContent=o.status||"Nowe";
+          const select=document.createElement("select");select.style.maxWidth="115px";select.style.padding="7px";select.style.borderRadius="9px";
+          ["Nowe","Potwierdzone","W realizacji","Wysłane","Zakończone","Anulowane"].forEach(s=>{const op=document.createElement("option");op.value=s;op.textContent=s;if(s===o.status)op.selected=true;select.append(op)});
+          select.onchange=async()=>{try{await updateDoc(doc(db,"orders",d.id),{status:select.value});status.textContent=select.value;toast("Zmieniono status zamówienia.")}catch(e){toast("Nie udało się zmienić statusu.")}};
+          const mail=document.createElement("a");mail.href="mailto:"+encodeURIComponent(o.customerEmail||"")+"?subject="+encodeURIComponent("Twoje zamówienie w sklepie Oczko i Nitka");mail.textContent="Napisz";mail.className="small-btn";mail.style.textDecoration="none";
+          grow.append(strong,small,status);item.append(grow,select,mail);el.append(item);
+        });
+      }catch(e){el.innerHTML='<p class="hint">Nie udało się pobrać zamówień. Sprawdź reguły Firestore.</p>'}
+    }
+    await loadProducts();
+  </script>
+</body>
+</html>
