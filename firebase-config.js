@@ -1,13 +1,24 @@
 // Uzupełnij danymi z Firebase Console → Project settings → General → Your apps → Web app.
 export const firebaseConfig = {
-  apiKey: "WKLEJ_TUTAJ_API_KEY",
-  authDomain: "WKLEJ_TUTAJ_PROJECT_ID.firebaseapp.com",
-  projectId: "WKLEJ_TUTAJ_PROJECT_ID",
-  storageBucket: "WKLEJ_TUTAJ_STORAGE_BUCKET",
-  messagingSenderId: "WKLEJ_TUTAJ_MESSAGING_SENDER_ID",
-  appId: "WKLEJ_TUTAJ_APP_ID"
+
+  apiKey: "AIzaSyCb8qsy0_QfY-UrjiWMLDHo7r6s29DfXkU",
+
+  authDomain: "oczko-i-nitka.firebaseapp.com",
+
+  projectId: "oczko-i-nitka",
+
+  storageBucket: "oczko-i-nitka.firebasestorage.app",
+
+  messagingSenderId: "950961092666",
+
+  appId: "1:950961092666:web:9a99f9948d3bad2e029d03",
+
+  measurementId: "G-MW33WSCSCP"
+
 };
+
+
 
 // Wklej UID swojego konta z Firebase Authentication → Users.
 // Tylko to konto będzie mogło zarządzać produktami i zamówieniami.
-export const ADMIN_UID = "WKLEJ_TUTAJ_UID_ADMINA";
+export const ADMIN_UID = "099CmmfbN1TCYWqkmc3EB8kI3F32";
